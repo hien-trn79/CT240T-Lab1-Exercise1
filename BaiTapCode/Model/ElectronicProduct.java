@@ -1,7 +1,3 @@
-
-import java.io.*;
-import java.util.*;
-
 public class ElectronicProduct extends Product implements Discountable {
     private int warrantyMonths;
 
@@ -26,7 +22,7 @@ public class ElectronicProduct extends Product implements Discountable {
 
     // Triển khai phương thức giảm giá trực tiếp vào price[cite: 2]
     @Override
-    public applyDiscount(double percent) {
+    public void applyDiscount(double percent) {
         if (percent > 0 && percent <= 100) {
             double newPrice = getPrice() * (1 - percent / 100.0);
             setPrice(newPrice);

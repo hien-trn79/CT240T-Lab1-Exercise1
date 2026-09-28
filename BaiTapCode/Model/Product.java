@@ -3,8 +3,8 @@ import java.io.*;
 import java.util.*;
 
 public abstract class Product {
-    private string id;
-    private string name;
+    private String id;
+    private String name;
     private double price;
 
     public Product() {
@@ -18,24 +18,23 @@ public abstract class Product {
 
     public abstract double calculateFinalPrice();
 
-    public string getId() {
+    public String getId() {
         // TODO implement here
-        return null;
+        return this.id;
     }
 
-    public void setId(string id) {
-        // TODO implement here
-        return null;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public string getName() {
+    public String getName() {
         // TODO implement here
-        return null;
+        return this.name;
     }
 
-    public void setName(string newName) {
+    public void setName(String newName) {
         // TODO implement here
-        return null;
+        this.name = newName;
     }
 
     public double getPrice() {
@@ -45,7 +44,7 @@ public abstract class Product {
 
     public void setPrice(double newPrice) {
         // TODO implement here
-        return null;
+        this.price = newPrice;
     }
 
 }
