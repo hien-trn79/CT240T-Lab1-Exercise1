@@ -1,52 +1,49 @@
+import java.util.ArrayList;
+import java.util.List;
 
-import java.io.*;
-import java.util.*;
-
-/**
- * 
- */
 public class ProductInventory {
+    private List<Product> products;
 
-    /**
-     * Default constructor
-     */
     public ProductInventory() {
+        this.products = new ArrayList<>();
     }
 
-
-    /**
-     * @param product 
-     * @return
-     */
+    // Thêm sản phẩm vào kho
     public void addProduct(Product product) {
-        // TODO implement here
-        return null;
+        if (product != null) {
+            products.add(product);
+        }
     }
 
-    /**
-     * @param id 
-     * @return
-     */
-    public void deleteProduct(string id) {
-        // TODO implement here
-        return null;
+    // Xóa sản phẩm theo id
+    public boolean removeProduct(String id) {
+        return products.removeIf(product -> product.getId().equalsIgnoreCase(id));
     }
 
-    /**
-     * @param name 
-     * @return
-     */
+    // Tìm kiếm danh sách sản phẩm theo tên (chứa từ khóa, không phân biệt hoa thường)
     public List<Product> searchByName(String name) {
-        // TODO implement here
-        return null;
+        List<Product> result = new ArrayList<>();
+        if (name == null || name.isEmpty()) {
+            return result;
+        }
+        for (Product product : products) {
+            if (product.getName().toLowerCase().contains(name.toLowerCase())) {
+                result.add(product);
+            }
+        }
+        return result;
     }
 
-    /**
-     * @return
-     */
+    // Tính tổng giá trị kho hàng dựa trên giá cuối cùng (Final Price) của từng sản phẩm
     public double calculateTotalValue() {
-        // TODO implement here
-        return 0.0d;
+        double total = 0;
+        for (Product product : products) {
+            total += product.calculateFinalPrice();
+        }
+        return total;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
 }

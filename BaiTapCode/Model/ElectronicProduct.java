@@ -2,50 +2,34 @@
 import java.io.*;
 import java.util.*;
 
-/**
- * 
- */
-public class ElectronicProduct extends {abstract} Product implements Discountable, Discountable {
+public class ElectronicProduct extends Product implements Discountable {
+    private int warrantyMonths;
 
-    /**
-     * Default constructor
-     */
-    public ElectronicProduct() {
+    public ElectronicProduct(String id, String name, double price, int warrantyMonths) {
+        super(id, name, price);
+        this.warrantyMonths = warrantyMonths;
     }
 
-    /**
-     * 
-     */
-    public int warrantyMonths;
-
-    /**
-     * @return
-     */
-    public void calculateFinalPrice() {
-        // TODO implement here
-        return null;
+    public int getWarrantyMonths() {
+        return warrantyMonths;
     }
 
-    /**
-     * @return
-     */
-    public abstract double calculateFinalPrice();
-
-    /**
-     * @param percent 
-     * @return
-     */
-    public void applyDiscount(double percent) {
-        // TODO implement Discountable.applyDiscount() here
-        return null;
+    public void setWarrantyMonths(int warrantyMonths) {
+        this.warrantyMonths = warrantyMonths;
     }
 
-    /**
-     * @return
-     */
+    // Ghi đè phương thức tính giá cuối cùng (đã tính thuế VAT 10%)[cite: 2]
+    @Override
     public double calculateFinalPrice() {
-        // TODO implement Discountable.calculateFinalPrice() here
-        return 0.0d;
+        return getPrice() * 1.10;
     }
 
+    // Triển khai phương thức giảm giá trực tiếp vào price[cite: 2]
+    @Override
+    public applyDiscount(double percent) {
+        if (percent > 0 && percent <= 100) {
+            double newPrice = getPrice() * (1 - percent / 100.0);
+            setPrice(newPrice);
+        }
+    }
 }
